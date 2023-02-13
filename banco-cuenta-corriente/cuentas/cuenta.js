@@ -6,6 +6,9 @@ export class cuenta {
 
     constructor(cliente, saldo, numero, agencia){
         
+        if (this.constructor == cuenta) {
+            throw new error('no se debe instanciar objetos de la clase cuenta')
+        }
         this.numero = numero;
         this.agencia = agencia;
         this.#cliente = cliente;
@@ -39,7 +42,7 @@ export class cuenta {
 
     retirarDeCuenta(valor){
         
-            _retirarDeCuenta(valor,0)
+        throw new error('debe implementar el metodo en su clase')
         
         }
 
@@ -60,14 +63,23 @@ export class cuenta {
         return this.#saldo
     }
 
-    transferirParaCuenta(valor,cuentaDestino){
-        if (valor<= this.retirarDeCuenta(valor)) {
-            
-            cuentaDestino.depositoEnCuenta(valor);
+    //validarRetiro(valor){
 
-            return this.#saldo;
-        }else{
-            console.log("no tiene suficiente dinero para transferir")
+        //if (this.#saldo - valor < 0) {
+            //console.log('saldo insuficiente')
+        //}else{
+            //console.log(`Transferencia existosa de $${valor}`)
+       // }
+   // }
+
+    transferirParaCuenta(valor,cuentaDestino){
+        
+        if (this.#saldo - valor < 0) {
+            console.log("Saldo insuficiente");
+        } else {
+            this.#saldo -= valor;
+            cuentaDestino.depositoEnCuenta(valor);
+            console.log(`Transferencia de $${valor} exitosa. Nuevo saldo: $${this.#saldo}`);
         }
         
         
