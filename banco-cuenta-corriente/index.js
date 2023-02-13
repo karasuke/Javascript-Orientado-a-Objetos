@@ -1,6 +1,9 @@
 
 import {cuentaCorriente} from './cuentaCorriente.js';
 import {cliente} from './Cliente.js';
+import { cuentaAhorro } from "./cuentaAhorro.js";
+
+
 
 
 
@@ -24,9 +27,10 @@ cuentaDeBoris.depositoEnCuenta(2000);
 cuentaDeBoris.transferirParaCuenta(100,cuentadePablo)
 
 
-console.log(cuentaCorriente.cantidadCuentas)
-
-
+const cuentaAhorroBoris = new cuentaAhorro(clienteBoris,0,"1","001");
+cuentaAhorroBoris.depositoEnCuenta(1000);
+cuentaAhorroBoris.retirarDeCuenta(100)
+console.log(cuentaAhorroBoris.verSaldo())
 
 
 
